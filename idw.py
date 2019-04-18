@@ -153,7 +153,7 @@ class tree(object):
         """
         self.distances, self.idx = self.tree.query(X, k, eps=eps, p=p)
         self.distances += regularize_by
-        weights = self.z[self.idx.ravel()].reshape(self.idx.shape)
+        weights = np.array(self.z)[self.idx.ravel()].reshape(self.idx.shape)
         mw = np.sum(weights/self.distances, axis=1) / np.sum(1./self.distances, axis=1)
         return mw
 
